@@ -1,0 +1,23 @@
+# Build / output artifacts
+apk/
+**/build/
+
+# Flutter / Dart tooling
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+
+# iOS (CocoaPods / Flutter generated)
+**/Pods/
+**/.symlinks/
+**/Flutter/Generated.xcconfig
+**/Flutter/flutter_export_environment.sh
+
+# Logs
+*.log
+color_picker_tool/tools/logs/
+
+# OS / IDE
+.DS_Store
+Thumbs.db

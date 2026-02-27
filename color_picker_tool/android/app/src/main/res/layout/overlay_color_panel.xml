@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/colorPanelRoot"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/overlay_panel_bg_opaque"
+    android:padding="12dp">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        android:scrollbarStyle="outsideOverlay">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvPanelTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="설정"
+            android:textColor="#111827"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btnClosePanel"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="닫기"
+            android:textColor="#374151"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- 메뉴는 레이아웃을 밀지 않도록 PopupMenu로 표시(코드에서 처리) -->
+
+    <!-- 메뉴 선택 결과(도움말/스크립터/크레딧)는 아래 설정을 밀지 않도록 오버레이로 표시(ScrollView 밖) -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvLangLabel"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="언어"
+            android:textColor="#374151"
+            android:textSize="13sp" />
+
+        <Spinner
+            android:id="@+id/spLang"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:spinnerMode="dropdown" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnScreenSettings"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:text="화면설정" />
+
+    <Button
+        android:id="@+id/btnColorPanel"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:text="색상패널"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvStopTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="중지조건"
+        android:textColor="#111827"
+        android:textStyle="bold"
+        android:textSize="14sp" />
+
+    <RadioGroup
+        android:id="@+id/rgStop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbInfinite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#374151"
+                android:text="무한대" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbTimeLimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#374151"
+                android:text="시간 제한" />
+
+            <TextView
+                android:id="@+id/tvTimeHms"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:gravity="end"
+                android:text="00h 00m 00s"
+                android:textColor="#2563EB"
+                android:textSize="13sp"
+                android:padding="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbCycleCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#374151"
+                android:text="사이클 수" />
+
+            <TextView
+                android:id="@+id/tvCycles"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:gravity="end"
+                android:text="1"
+                android:textColor="#374151"
+                android:textSize="13sp"
+                android:padding="10dp" />
+        </LinearLayout>
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnMacroSave"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="메크로 저장" />
+
+        <Button
+            android:id="@+id/btnMacroOpen"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="메크로 열기" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAccessibilitySettings"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:text="접근성 설정" />
+
+    <Button
+        android:id="@+id/btnScreenSharePermissionSettings"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:text="화면 공유 권한 설정" />
+
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:text="닫기" />
+
+    <TextView
+        android:id="@+id/tvVersionInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="버전"
+        android:textColor="#6B7280"
+        android:textSize="11sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 패널 내부 오버레이(새 창 아님): 선택된 메뉴 내용 표시 -->
+    <FrameLayout
+        android:id="@+id/menuTextWrap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/menuTextCard"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="@drawable/overlay_panel_bg_opaque"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/tvMenuTextTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="도움말"
+                android:textColor="#111827"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:paddingBottom="6dp" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:fillViewport="true">
+
+                <TextView
+                    android:id="@+id/tvMenuTextBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#111827"
+                    android:textSize="13sp"
+                    android:padding="10dp"
+                    android:text="..." />
+            </ScrollView>
+
+            <Button
+                android:id="@+id/btnMenuTextClose"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:text="닫기" />
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>
+

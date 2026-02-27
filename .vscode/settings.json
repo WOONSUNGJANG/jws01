@@ -1,0 +1,24 @@
+{
+  // Cursor OOM 완화: 대용량 산출물(빌드/캐시)을 검색/파일감시/인덱싱에서 제외
+  "search.exclude": {
+    "**/build/**": true,
+    "**/.dart_tool/**": true,
+    "**/.gradle/**": true,
+    "**/.idea/**": true,
+    "**/.vscode/**": true,
+    "**/node_modules/**": true,
+    "**/*.apk": true,
+    "**/*.aab": true
+  },
+  "files.watcherExclude": {
+    "**/build/**": true,
+    "**/.dart_tool/**": true,
+    "**/.gradle/**": true,
+    "**/node_modules/**": true
+  },
+  "files.exclude": {
+    "**/.dart_tool": true,
+    "**/.gradle": true
+  }
+}
+

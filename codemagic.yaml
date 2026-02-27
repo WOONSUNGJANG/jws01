@@ -1,0 +1,107 @@
+workflows:
+  ios_ipa_adhoc:
+    name: iOS IPA (AdHoc install)
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+
+    cache:
+      cache_paths:
+        - ~/.pub-cache
+        - ~/Library/Caches/CocoaPods
+        - ~/Library/Developer/Xcode/DerivedData/CompilationCache.noindex
+
+    environment:
+      flutter: stable
+      xcode: latest
+
+      ios_signing:
+        distribution_type: ad_hoc # app_store | ad_hoc | development | enterprise
+        bundle_identifier: com.atx.pic.colorPickerTool
+
+      vars:
+        FLUTTER_APP_DIR: color_picker_tool
+        IOS_BUNDLE_ID: com.atx.pic.colorPickerTool
+
+    scripts:
+      - name: Flutter pub get
+        script: |
+          cd "$FLUTTER_APP_DIR"
+          flutter pub get
+
+      - name: Install CocoaPods
+        script: |
+          cd "$FLUTTER_APP_DIR/ios"
+          pod install
+
+      - name: Set up code signing settings on Xcode project
+        script: |
+          cd "$FLUTTER_APP_DIR/ios"
+          xcode-project use-profiles
+
+      - name: Build IPA (Flutter)
+        script: |
+          cd "$FLUTTER_APP_DIR"
+          BUILD_NUMBER="${CM_BUILD_NUMBER:-${BUILD_NUMBER:-1}}"
+          flutter build ipa --release \
+            --build-name="1.0.$BUILD_NUMBER" \
+            --build-number="$BUILD_NUMBER"
+
+    artifacts:
+      - color_picker_tool/build/ios/ipa/*.ipa
+      - color_picker_tool/build/ios/ipa/*.dSYM.zip
+      - color_picker_tool/build/ios/archive/*.xcarchive
+      - color_picker_tool/build/**/flutter_build.log
+
+  ios_ipa_app_store:
+    name: iOS IPA (App Store / TestFlight)
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+
+    cache:
+      cache_paths:
+        - ~/.pub-cache
+        - ~/Library/Caches/CocoaPods
+        - ~/Library/Developer/Xcode/DerivedData/CompilationCache.noindex
+
+    environment:
+      flutter: stable
+      xcode: latest
+
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.atx.pic.colorPickerTool
+
+      vars:
+        FLUTTER_APP_DIR: color_picker_tool
+        IOS_BUNDLE_ID: com.atx.pic.colorPickerTool
+
+    scripts:
+      - name: Flutter pub get
+        script: |
+          cd "$FLUTTER_APP_DIR"
+          flutter pub get
+
+      - name: Install CocoaPods
+        script: |
+          cd "$FLUTTER_APP_DIR/ios"
+          pod install
+
+      - name: Set up code signing settings on Xcode project
+        script: |
+          cd "$FLUTTER_APP_DIR/ios"
+          xcode-project use-profiles
+
+      - name: Build IPA (Flutter)
+        script: |
+          cd "$FLUTTER_APP_DIR"
+          BUILD_NUMBER="${CM_BUILD_NUMBER:-${BUILD_NUMBER:-1}}"
+          flutter build ipa --release \
+            --build-name="1.0.$BUILD_NUMBER" \
+            --build-number="$BUILD_NUMBER"
+
+    artifacts:
+      - color_picker_tool/build/ios/ipa/*.ipa
+      - color_picker_tool/build/ios/ipa/*.dSYM.zip
+      - color_picker_tool/build/ios/archive/*.xcarchive
+      - color_picker_tool/build/**/flutter_build.log
+

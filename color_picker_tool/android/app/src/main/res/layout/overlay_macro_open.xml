@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/macroOpenRoot"
+    android:layout_width="340dp"
+    android:layout_height="match_parent"
+    android:background="@drawable/overlay_panel_bg_opaque"
+    android:padding="14dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        android:scrollbarStyle="outsideOverlay">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="오토클릭짱"
+                android:textColor="#111827"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="메크로 열기"
+                android:textColor="#111827"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="기본폴더(atxfile)에서만 불러옵니다."
+                android:textColor="#374151"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvPath"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="/storage/emulated/0/Android/data/.../files/atxfile"
+                android:textColor="#6B7280"
+                android:textSize="11sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnFav1"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:textColor="#111827"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:singleLine="false"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:text="즐겨1\n(비어있음)" />
+
+                <Button
+                    android:id="@+id/btnFav2"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:textColor="#111827"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:singleLine="false"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:text="즐겨2\n(비어있음)" />
+
+                <Button
+                    android:id="@+id/btnFav3"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:textColor="#111827"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:singleLine="false"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:text="즐겨3\n(비어있음)" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvFavHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="목록에서 파일을 길게 눌러 즐겨1~3에 등록할 수 있습니다."
+                android:textColor="#6B7280"
+                android:textSize="11sp" />
+
+            <CheckBox
+                android:id="@+id/cbFavAddToToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="메뉴에추가"
+                android:textColor="#111827"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/listContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical" />
+
+            <Button
+                android:id="@+id/btnClose"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="12dp"
+                android:textColor="#111827"
+                android:text="닫기" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
+

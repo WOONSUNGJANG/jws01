@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbarRoot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/overlay_toolbar_bg"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp">
+
+    <LinearLayout
+        android:id="@+id/toolbarRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnPlay"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/overlay_icon_button_bg"
+            android:contentDescription="play"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cp_play"
+            android:tint="@null" />
+
+        <ImageButton
+            android:id="@+id/btnPlus"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/overlay_icon_button_bg"
+            android:contentDescription="plus"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cp_plus"
+            android:tint="@null" />
+
+        <ImageButton
+            android:id="@+id/btnPencil"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/overlay_icon_button_bg"
+            android:contentDescription="pencil"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cp_edit_off"
+            android:tint="@null" />
+
+        <ImageButton
+            android:id="@+id/btnTrash"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/overlay_icon_button_bg"
+            android:contentDescription="trash"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cp_trash"
+            android:tint="@null" />
+
+        <ImageButton
+            android:id="@+id/btnGear"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/overlay_icon_button_bg"
+            android:contentDescription="object_toggle"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cp_eye_open"
+            android:tint="@null" />
+
+        <ImageButton
+            android:id="@+id/btnSettings"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/overlay_icon_button_bg"
+            android:contentDescription="settings"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cp_gear"
+            android:tint="@null" />
+
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/overlay_icon_button_bg"
+            android:contentDescription="close"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cp_close"
+            android:tint="@null" />
+
+        <!-- 이동(무브) 아이콘: 여기서 드래그하여 툴바 이동 -->
+        <ImageButton
+            android:id="@+id/btnMove"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/overlay_icon_button_bg"
+            android:contentDescription="move"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:tint="#111827" />
+
+    </LinearLayout>
+
+</FrameLayout>
+

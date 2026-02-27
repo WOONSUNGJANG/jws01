@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="false"
+    android:scrollbars="vertical"
+    android:fadeScrollbars="false"
+    android:scrollbarStyle="outsideOverlay"
+    android:clipToPadding="false"
+    android:overScrollMode="ifContentScrolls">
+
+<LinearLayout
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="14dp"
+    android:paddingBottom="32dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/marker_settings_title"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvCoord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="coord"
+        android:textSize="13sp"
+        android:paddingBottom="12dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvKindLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="마커 종류"
+        android:textSize="13sp"
+        android:paddingTop="2dp" />
+
+    <Spinner
+        android:id="@+id/spKind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvDelayLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="지연 시간(ms)"
+        android:textSize="13sp" />
+
+    <EditText
+        android:id="@+id/etDelayMs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:imeOptions="actionDone|flagNoExtractUi"
+        android:hint="예: 300"
+        android:padding="10dp" />
+
+    <!-- solo_main 전용 -->
+    <TextView
+        android:id="@+id/tvSoloStartDelayLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="실행전 지연"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/soloStartDelayRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/etSoloStartDelay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:imeOptions="actionDone|flagNoExtractUi"
+            android:hint="예: 300000"
+            android:padding="10dp" />
+
+        <Spinner
+            android:id="@+id/spSoloStartDelayUnit"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvSoloComboLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="콤보클릭 개수(1~10)"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <Spinner
+        android:id="@+id/spSoloComboCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnSoloCreateCombo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="콤보생성"
+        android:layout_marginTop="10dp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnSoloTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TEST"
+        android:layout_marginTop="8dp"
+        android:visibility="gone" />
+
+    <!-- solo_main / solo_item 전용: 클릭실행확인(이미지 확인) -->
+    <TextView
+        android:id="@+id/tvSoloVerifyLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="클릭실행확인"
+        android:textSize="13sp"
+        android:paddingTop="12dp"
+        android:visibility="gone" />
+
+    <CheckBox
+        android:id="@+id/cbSoloVerifyUse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="클릭실행확인(기본 해제)"
+        android:textSize="13sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/soloVerifyFileRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivSoloVerifyPreview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:scaleType="centerCrop"
+            android:background="#E5E7EB" />
+
+        <Button
+            android:id="@+id/btnSoloVerifyPick"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:minWidth="0dp"
+            android:text="이미지가져오기" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvSoloVerifyModeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="실행확인 방식"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/soloVerifyModeRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- (변경) 실행확인 방식은 1가지로 고정: "이미지가 있으면 클릭 / 없으면 재개" -->
+        <TextView
+            android:id="@+id/tvSoloVerifyModeFixed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="이미지가 있으면 클릭 / 없으면 재개"
+            android:textSize="13sp" />
+
+        <!-- mode1(=mode0) 재개(goto) 대상 -->
+        <LinearLayout
+            android:id="@+id/soloVerifyGotoRow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:paddingTop="4dp">
+
+            <TextView
+                android:id="@+id/tvSoloVerifyGotoLabel1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="재개 →"
+                android:textSize="13sp"
+                android:layout_marginEnd="8dp" />
+
+            <Spinner
+                android:id="@+id/spSoloVerifyGoto1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <!-- solo_main / solo_item 전용: (추가) 클릭실행확인 전에 1회 클릭 -->
+        <LinearLayout
+            android:id="@+id/soloPreClickContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvSoloPreClickLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="실행전 클릭"
+                android:textSize="13sp"
+                android:paddingTop="12dp"
+                android:visibility="gone" />
+
+            <CheckBox
+                android:id="@+id/cbSoloPreClickUse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="실행전 클릭(기본 해제)"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/soloPreClickPickRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/btnSoloPreClickPick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:minWidth="0dp"
+                    android:text="좌표선택" />
+
+                <TextView
+                    android:id="@+id/tvSoloPreClickCoord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="x=-, y=-"
+                    android:textSize="13sp"
+                    android:textColor="#374151" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvSoloVerifyAccuracyLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="이미지정확도(50~100%)"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <Spinner
+        android:id="@+id/spSoloVerifyAccuracy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <!-- swipe_to(서브) 전용 -->
+    <LinearLayout
+        android:id="@+id/swipeSubAlignRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btnAlignH"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minWidth="0dp"
+            android:text="가로정렬" />
+
+        <Button
+            android:id="@+id/btnAlignV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:minWidth="0dp"
+            android:text="세로정렬" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvMoveUpLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="move up(ms)  (마지막sub도착 후 → 손떼기(UP)까지 시간)"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/etMoveUpMs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:imeOptions="actionDone|flagNoExtractUi"
+        android:hint="예: 700"
+        android:padding="10dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvSwipeModeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="스와이프 실행방식"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <Spinner
+        android:id="@+id/spSwipeMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvModuleDirLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="방향(방향모듈)"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <Spinner
+        android:id="@+id/spModuleDir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <!-- color_module(색상모듈) 전용 -->
+    <TextView
+        android:id="@+id/tvColorModuleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="검색색상"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/colorModuleColorRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <View
+            android:id="@+id/vColorModuleSwatch"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:background="#000000"
+            android:layout_marginEnd="10dp" />
+
+        <EditText
+            android:id="@+id/etColorModuleHex"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="textNoSuggestions"
+            android:imeOptions="actionDone|flagNoExtractUi"
+            android:hint="#RRGGBB"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/btnColorModulePick"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:minWidth="0dp"
+            android:text="색가져오기" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvColorModuleCoordLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="체크좌표(픽셀)"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/colorModuleCoordRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/etColorModuleCheckX"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:imeOptions="actionDone|flagNoExtractUi"
+            android:hint="x"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/etColorModuleCheckY"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:imeOptions="actionDone|flagNoExtractUi"
+            android:hint="y"
+            android:padding="10dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvColorModuleAccuracyLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="색상정확도(50~100%)"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <Spinner
+        android:id="@+id/spColorModuleAccuracy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <!-- image_module(이미지모듈) 전용 -->
+    <TextView
+        android:id="@+id/tvImageModuleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="검색이미지"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/imageModuleFileRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivImageModulePreview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:scaleType="centerCrop"
+            android:background="#E5E7EB" />
+
+        <EditText
+            android:id="@+id/etImageModuleFile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="textNoSuggestions"
+            android:imeOptions="actionDone|flagNoExtractUi"
+            android:hint="template.png"
+            android:padding="10dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnImageModulePick"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:minWidth="0dp"
+            android:text="이미지가져오기" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvImageModuleCoordLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="시작체크좌표(픽셀)"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/imageModuleCoordRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/etImageModuleCheckX"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:imeOptions="actionDone|flagNoExtractUi"
+            android:hint="x"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/etImageModuleCheckY"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:imeOptions="actionDone|flagNoExtractUi"
+            android:hint="y"
+            android:padding="10dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvImageModuleEndCoordLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="종료체크좌표(픽셀)"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/imageModuleEndCoordRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/etImageModuleEndX"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:imeOptions="actionDone|flagNoExtractUi"
+            android:hint="x"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/etImageModuleEndY"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:imeOptions="actionDone|flagNoExtractUi"
+            android:hint="y"
+            android:padding="10dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvImageModuleFoundCenter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="검색된이미지중앙좌표(픽셀): x=?, y=?"
+        android:textSize="13sp"
+        android:textColor="#374151"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvImageModuleClickModeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="클릭 방식"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <RadioGroup
+        android:id="@+id/rgImageModuleClickMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/rbImageClickFoundCenter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="찿은이미지 중앙좌표 클릭" />
+
+        <RadioButton
+            android:id="@+id/rbImageClickMarker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="마커위치클릭" />
+
+        <RadioButton
+            android:id="@+id/rbImageClickSound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="소리내기" />
+
+        <RadioButton
+            android:id="@+id/rbImageClickVibrate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="진동하기" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvImageModuleLastMatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="최근매칭: score=?, min=?"
+        android:textSize="13sp"
+        android:textColor="#6B7280"
+        android:paddingTop="8dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvImageModuleAccuracyLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="이미지정확도(50~100%)"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <Spinner
+        android:id="@+id/spImageModuleAccuracy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <!-- module(방향모듈) 전용: 패턴/길이/모드/단독/hold -->
+    <TextView
+        android:id="@+id/tvModulePatternLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="스와이프 방향"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <Spinner
+        android:id="@+id/spModulePattern"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvModuleLenLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="스와이프 길이(px)"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/etModuleLenPx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:imeOptions="actionDone|flagNoExtractUi"
+        android:hint="예: 300"
+        android:padding="10dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvModuleDirModeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="모듈 방향"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <Spinner
+        android:id="@+id/spModuleDirMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvModuleExecModeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="모듈 실행 방식"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <Spinner
+        android:id="@+id/spModuleExecMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvModuleMoveUpLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Move up(ms)  (마지막 도착→손 떼기(UP)까지)"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/etModuleMoveUpMs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:imeOptions="actionDone|flagNoExtractUi"
+        android:hint="예: 0"
+        android:padding="10dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvJitterLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="랜덤 지연(%)"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <SeekBar
+            android:id="@+id/sbJitter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="100"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvJitter"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="50%"
+            android:gravity="end"
+            android:textSize="13sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvPressLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="누름(ms)"
+        android:textSize="13sp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/etPressMs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:imeOptions="actionDone|flagNoExtractUi"
+        android:hint="예: 90"
+        android:padding="10dp"
+        android:visibility="gone" />
+
+    <CheckBox
+        android:id="@+id/cbDoubleClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="더블클릭"
+        android:textSize="13sp"
+        android:visibility="gone" />
+
+    <CheckBox
+        android:id="@+id/cbAiDefense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="AI탐지방어"
+        android:textSize="13sp"
+        android:checked="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="14dp">
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minWidth="0dp"
+            android:text="@string/marker_settings_delete" />
+
+        <Button
+            android:id="@+id/btnClose"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:minWidth="0dp"
+            android:text="@string/marker_settings_close" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:minWidth="0dp"
+            android:text="@string/marker_settings_save" />
+    </LinearLayout>
+
+</LinearLayout>
+</ScrollView>
+

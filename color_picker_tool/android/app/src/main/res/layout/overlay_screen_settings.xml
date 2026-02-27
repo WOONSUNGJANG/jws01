@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/screenSettingsRoot"
+    android:layout_width="320dp"
+    android:layout_height="match_parent"
+    android:background="@drawable/overlay_panel_bg_opaque"
+    android:padding="14dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        android:scrollbarStyle="outsideOverlay">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="기본설정(화면설정)"
+                android:textColor="#111827"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingBottom="10dp" />
+
+            <TextView
+                android:id="@+id/tvToolbarOpacity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="툴바 투명도: 85%"
+                android:textColor="#374151"
+                android:textSize="13sp" />
+
+            <SeekBar
+                android:id="@+id/sbToolbarOpacity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="120"
+                android:progress="55" />
+
+            <TextView
+                android:id="@+id/tvToolbarScale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="툴바 가로크기(세로유지): 100%"
+                android:textColor="#374151"
+                android:textSize="13sp" />
+
+            <SeekBar
+                android:id="@+id/sbToolbarScale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="150"
+                android:progress="50" />
+
+            <TextView
+                android:id="@+id/tvObjectScale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="객체 크기(최대 +100%): +0%"
+                android:textColor="#374151"
+                android:textSize="13sp" />
+
+            <SeekBar
+                android:id="@+id/sbObjectScale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="150"
+                android:progress="50" />
+
+            <TextView
+                android:id="@+id/tvClickPressMs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="마커 클릭 pressMs(다운->업 유지): 90ms"
+                android:textColor="#374151"
+                android:textSize="13sp" />
+
+            <SeekBar
+                android:id="@+id/sbClickPressMs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="490"
+                android:progress="80" />
+
+            <TextView
+                android:id="@+id/tvImageVerifyInterval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="이미지 3차 검증 인터벌: 120ms"
+                android:textColor="#374151"
+                android:textSize="13sp" />
+
+            <SeekBar
+                android:id="@+id/sbImageVerifyInterval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="1000"
+                android:progress="120" />
+
+            <TextView
+                android:id="@+id/tvExecProbability"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="실행확률: 80%"
+                android:textColor="#374151"
+                android:textSize="13sp" />
+
+            <SeekBar
+                android:id="@+id/sbExecProbability"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="80" />
+
+            <TextView
+                android:id="@+id/tvRandomDelayPct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="랜덤지연: 50%"
+                android:textColor="#374151"
+                android:textSize="13sp" />
+
+            <SeekBar
+                android:id="@+id/sbRandomDelayPct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="50" />
+
+            <CheckBox
+                android:id="@+id/cbTouchViz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="파란 점(터치 표시) 사용"
+                android:textColor="#374151"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvTouchVizHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="※ 실행 중 클릭 좌표에만 잠깐 표시됩니다."
+                android:textColor="#6B7280"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp" />
+
+            <LinearLayout
+                android:id="@+id/rowLogDebug"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cbLogView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="로그보기"
+                    android:textColor="#374151"
+                    android:textSize="13sp"
+                    android:checked="false" />
+
+                <CheckBox
+                    android:id="@+id/cbDebugAdb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="디버깅"
+                    android:textColor="#374151"
+                    android:textSize="13sp"
+                    android:checked="false" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnClose"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="14dp"
+                android:text="닫기" />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
+
