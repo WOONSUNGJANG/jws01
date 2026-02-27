@@ -1,6 +1,9 @@
 workflows:
   ios_ipa_adhoc:
-    name: iOS IPA (AdHoc install)
+    # 주의: AdHoc는 Apple Developer Portal에 "Ad Hoc" 프로파일(+UDID 등록)이 필요합니다.
+    # 현재 Codemagic에서 ad_hoc 프로파일을 못 찾는 오류가 발생해,
+    # 설치/테스트 배포는 TestFlight(App Store 타입) 워크플로우를 기본으로 사용하도록 설정했습니다.
+    name: iOS IPA (TestFlight install)
     max_build_duration: 120
     instance_type: mac_mini_m2
 
@@ -15,7 +18,7 @@ workflows:
       xcode: latest
 
       ios_signing:
-        distribution_type: ad_hoc # app_store | ad_hoc | development | enterprise
+        distribution_type: app_store # app_store | ad_hoc | development | enterprise
         bundle_identifier: com.atx.pic.colorPickerTool
 
       vars:

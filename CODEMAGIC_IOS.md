@@ -25,8 +25,8 @@ Codemagic UI에서 아래를 준비/업로드하세요.
 Apple Developer Portal / App Store Connect에서도 동일한 bundle id로 App ID가 있어야 합니다.
 
 ### 4) 워크플로우 선택
-- **설치용(AdHoc) IPA**: `ios_ipa_adhoc`
-- **TestFlight/App Store용**: `ios_ipa_app_store`
+- **설치/테스트(TestFlight) IPA**: `ios_ipa_adhoc` (현재는 App Store 타입으로 설정됨)
+- **App Store/TestFlight용**: `ios_ipa_app_store`
 
 ### 5) 빌드 산출물
 워크플로우 실행 후 아티팩트로 아래가 생성됩니다.
